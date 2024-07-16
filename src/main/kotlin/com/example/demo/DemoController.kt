@@ -37,12 +37,13 @@ class DemoController {
                                 raw(".htmx-request { opacity: 1 !important; }")
                             }
                         }
+                        title(content = "Spring Boot + Kotlinx.html + htmx")
                     }
                     body {
                         main {
                             h1("visually-hidden") { +"""Heroes examples""" }
                             div("px-4 py-5 text-center") {
-                                h1("display-5 fw-bold text-body-emphasis") { +"""Centered hero""" }
+                                h1("display-5 fw-bold text-body-emphasis") { +"""Spring Boot + Kotlinx.html + htmx""" }
                                 div("col-lg-6 mx-auto") {
                                     p("lead mb-4") { +"""Quickly design and customize responsive mobile-first sites with Bootstrap""" }
                                     div("d-grid gap-2 d-sm-flex justify-content-sm-center") {
