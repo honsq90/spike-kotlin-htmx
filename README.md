@@ -110,6 +110,21 @@ Complex UIs | react-select + AntD / Chakra UI / Tailwind / Daisy UI | ???
 ### Testing with Kotlinx.html
 
 ```kotlin
+
+  @PostMapping("/list")
+  fun renderList(@RequestParam number: Int): String {
+    return createHTML()
+      .ul {
+        repeat(number) {
+          li {
+            +"Item ${it + 1}"
+          }
+        }
+      }
+  }
+
+  // ...
+
   @Test
   fun `should render list`() {
       val number = 5
