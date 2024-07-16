@@ -127,7 +127,7 @@ CI | JUnit + Spring Testing + Webpack + Babel + Minifying + Typescript + ESLint 
 Artifacts | jar/war + Webpack vendor bundles + Webpack hashed entrypoints + Webpack hashed JS/CSS bundles | jar/war
 Complex UIs | react-select + AntD / Chakra UI / Tailwind / Daisy UI | ???
 
-### Testing with Kotlinx.html
+## Testing with Kotlinx.html
 
 ```kotlin
 
@@ -159,4 +159,13 @@ Complex UIs | react-select + AntD / Chakra UI / Tailwind / Daisy UI | ???
       }
 
   }
+
 ```
+
+### Type safety
+
+![](./docs/type_safety.png)
+
+### Test coverage
+
+![](./docs/coverage.png)
