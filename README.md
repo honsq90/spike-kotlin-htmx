@@ -21,31 +21,6 @@ This overhead is compounded due to each library having different deprecation sch
 
 ## Chosen technologies
 
-In a traditional Spring + React ecosystem, a full feature slice usually involves:
-
-1. Create Spring JPA Repo
-1. Create Spring Service
-1. Create Spring Controller
-1. Create Kotlin data classes
-1. Create JUnit tests
-1. Create new Webpack entry
-1. Create new API retrieval layer
-1. Create Typescript data classes to match API response
-1. Create UI state (MobX observers or Redux actions/dispatchers/reducers)
-1. Create React component
-1. Create Jest tests
-1. Bundle TS and JS vendor files into minified vendor assets
-1. Bundle TS and JS project files into minified project assets
-1. Host JS and CSS either on a CDN or in a static folder 
-1. Spring Thymeleaf generates HTML
-1. Load React into DOM
-1. Load project bundle into DOM
-1. Initialise React application
-1. Fetch data from API
-1. Parse JSON into Javascript objects
-1. React creates a virtual DOM and observes for stateful changes
-1. React re-renders the relevant DOM elements
-
 ### Kotlinx.html
 
 This replaces Typescript and JSX completely, with built-in compile time feedback on nullable data. 
@@ -87,6 +62,51 @@ div {
     id = "data-list"
 }
 ```
+
+## Comparison
+
+<details>
+<summary>Using Spring + Thymeleaf + React</summary>
+
+1. Create Spring JPA Repo
+1. Create Spring Service
+1. Create Spring Controller
+1. Create Kotlin data classes
+1. Create JUnit tests
+1. Create new Webpack entry
+1. Create new API retrieval layer
+1. Create Typescript data classes to match API response
+1. Create UI state (MobX observers or Redux actions/dispatchers/reducers)
+1. Create React component
+1. Create Jest tests
+1. Bundle TS and JS vendor files into minified vendor assets
+1. Bundle TS and JS project files into minified project assets
+1. Host JS and CSS either on a CDN or in a static folder 
+1. Spring Thymeleaf generates HTML
+1. Load React into DOM
+1. Load project bundle into DOM
+1. Initialise React application
+1. Fetch data from API
+1. Parse JSON into Javascript objects
+1. React creates a virtual DOM and observes for stateful changes
+1. React re-renders the relevant DOM elements
+
+</details>
+
+<details>
+<summary>Using Kotlinx.html and htmx</summary>
+
+1. Create Spring JPA Repo
+1. Create Spring Service
+1. Create Spring Controller
+1. Create Kotlin data classes
+1. Create Kotlinx.html template with htmx tags
+1. Create JUnit tests
+1. Spring Thymeleaf generates HTML
+1. Load base styles into DOM
+1. htmx re-renders the relevant DOM elements
+
+</details>
 
 # Feature comparison
 
