@@ -31,6 +31,7 @@ In a traditional Spring + React ecosystem, a full feature slice usually involves
 1. Create new Webpack entry
 1. Create new API retrieval layer
 1. Create Typescript data classes to match API response
+1. Create UI state (MobX observers or Redux actions/dispatchers/reducers)
 1. Create React component
 1. Create Jest tests
 1. Bundle TS and JS vendor files into minified vendor assets
@@ -93,7 +94,7 @@ Ultimately, each Node.js ecosystem tool aims to improve the predictability of ho
 
 Feature | With Node.js | Without Node.js
 ------|--------|--------
-Dependecy Management | Maven + NPM/Yarn | Maven + [webjars](https://www.webjars.org/)
+Dependency Management | Maven + NPM/Yarn | Maven + [webjars](https://www.webjars.org/)
 Module management | Maven + Yarn workspaces/Nx/Lerna + Webpack entries + Webpack Module Federation | Maven
 Date formatting | Java date + moment.js + date-fns | Java date
 Currency formatting | Java currency + browser locale | Java currency
@@ -104,4 +105,4 @@ Data retrieval | Kotlin data class + Typescript interface + axios/fetch | Kotlin
 Conditional UIs | Kotlin + Typescript + React JSX | Kotlin
 CI | JUnit + Spring Testing + Webpack + Babel + Minifying + Typescript + ESLint + Jest | JUnit + Spring Testing + JSoup
 Artifacts | jar/war + Webpack vendor bundles + Webpack hashed entrypoints + Webpack hashed JS/CSS bundles | jar/war
-
+Complex UIs | react-select + AntD / Chakra UI / Tailwind / Daisy UI | ???
