@@ -13,14 +13,3 @@ fun main(args: Array<String>) {
 }
 
 
-
-
-@Controller
-class TestController {
-	@GetMapping
-	fun renderDashboard(): String {
-		return createHtml().html {
-			
-		}
-	}
-}
