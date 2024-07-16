@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 class DemoController {
+    private val flag = System.getProperty("feature-1").toBoolean()
 
     @PostMapping("/list")
     fun renderList(@RequestParam number: Int): String {
@@ -25,6 +26,9 @@ class DemoController {
 
     @GetMapping("/")
     fun renderDashboard(): String {
+
+        val condition = false
+
         return createHTML()
             .html {
                 document {
@@ -83,6 +87,11 @@ class DemoController {
                                         style = "opacity: 0;"
                                         +"""Loading..."""
                                     }
+                                }
+                            }
+                            if (flag) {
+                                div("text-center") {
+                                    +"I'm feature flagged"
                                 }
                             }
                             div("text-center") {
