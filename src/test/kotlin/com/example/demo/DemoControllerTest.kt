@@ -20,7 +20,12 @@ class DemoControllerTest {
 
         val doc: Document = Jsoup.parse(html)
         val heroPrimaryButton = doc.select("[data-testid='hero-primary-button']")
-        assertEquals("Primary button", heroPrimaryButton.text())
+        assertEquals("Click me", heroPrimaryButton.text())
         assertEquals("hero-primary-button", heroPrimaryButton.attr("data-testid"))
+
+        val form = doc.getElementById("updateForm")
+        assertEquals("/list", form.attr("hx-post"))
+        assertEquals("#hero-list", form.attr("hx-target"))
+
     }
 }
