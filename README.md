@@ -106,3 +106,22 @@ Conditional UIs | Kotlin + Typescript + React JSX | Kotlin
 CI | JUnit + Spring Testing + Webpack + Babel + Minifying + Typescript + ESLint + Jest | JUnit + Spring Testing + JSoup
 Artifacts | jar/war + Webpack vendor bundles + Webpack hashed entrypoints + Webpack hashed JS/CSS bundles | jar/war
 Complex UIs | react-select + AntD / Chakra UI / Tailwind / Daisy UI | ???
+
+### Testing with Kotlinx.html
+
+```kotlin
+  @Test
+  fun `should render list`() {
+      val number = 5
+      val html = controller.renderList(number)
+
+      val doc: Document = Jsoup.parse(html)
+
+      val listItems = doc.getElementsByTag("li")
+
+      listItems.forEach {
+          it.text() shouldContain "Item "
+      }
+
+  }
+```
