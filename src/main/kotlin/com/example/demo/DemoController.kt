@@ -27,6 +27,7 @@ class DemoController {
                                     p("lead mb-4") { +"""Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.""" }
                                     div("d-grid gap-2 d-sm-flex justify-content-sm-center") {
                                         button(classes = "btn btn-primary btn-lg px-4 gap-3") {
+                                            attributes["data-testid"] = "hero-primary-button"
                                             type = ButtonType.button
                                             +"""Primary button"""
                                         }
