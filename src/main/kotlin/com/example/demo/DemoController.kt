@@ -18,7 +18,7 @@ class DemoController {
             .ul {
                 repeat(number) {
                     li {
-                        +"Item $it"
+                        +"Item ${it + 1}"
                     }
                 }
             }
@@ -26,8 +26,6 @@ class DemoController {
 
     @GetMapping("/")
     fun renderDashboard(): String {
-
-        val condition = false
 
         return createHTML()
             .html {
