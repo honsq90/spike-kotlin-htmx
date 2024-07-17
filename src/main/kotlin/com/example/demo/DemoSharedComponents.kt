@@ -71,21 +71,3 @@ fun FlowContent.wrapper(children: () -> Unit) {
         children()
     }
 }
-
-fun FlowContent.demo(show: Boolean = false) {
-    div {
-        if (show) {
-            p {
-                +"Hello"
-            }
-        }
-    }
-}
-
-fun renderPage(): String {
-    return createHTML()
-        .div {
-            demo() // follows existing Kotlin behaviour
-            demo(show = true)
-        }
-}

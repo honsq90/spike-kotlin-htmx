@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 class DemoController {
-    private val flag = System.getProperty("feature-1").toBoolean()
+    private val flag
+        get() = System.getProperty("feature-1").toBoolean()
 
     @PostMapping("/list")
     fun renderList(@RequestParam number: Int): String {

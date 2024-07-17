@@ -2,11 +2,12 @@ package com.example.demo
 
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
-import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.InjectMocks
 import org.mockito.junit.jupiter.MockitoExtension
+import kotlin.test.assertContains
+import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
 @ExtendWith(MockitoExtension::class)
@@ -17,6 +18,7 @@ class DemoControllerTest {
 
     @Test
     fun `should render default layout`() {
+        System.setProperty("feature-1", "false")
         val html = controller.renderDashboard()
 
         val doc: Document = Jsoup.parse(html)
@@ -44,6 +46,7 @@ class DemoControllerTest {
         assertEquals("/list", form.attr("hx-post"))
         assertEquals("#hero-list", form.attr("hx-target"))
 
+        assertContains(doc.text(), "I'm feature flagged")
     }
 
     @Test
@@ -60,6 +63,7 @@ class DemoControllerTest {
         }
 
     }
+
     @Test
     fun `should render list - 9 items`() {
         val number = 9
