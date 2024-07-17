@@ -1,16 +1,20 @@
+# Spring Boot + kotlinx.html + htmx
+
+Inspired by [DjangoCon 2022 | From React to htmx on a real-world SaaS product: we did it, and it's awesome!](https://www.youtube.com/watch?v=3GObi93tjZI)
+
 ![demo](./docs/demo.gif)
 
-# Experiment Purpose
+## Goal
 
 > To reduce the complexity of a full stack feature delivery by replacing Node.js tooling with Kotlin equivalents
 
-As the Node.js ecosystem and tooling evolve, one would need to keep these tools up to date:
+As the Node.js ecosystem and tooling evolve, the number of tools to keep up to date with is quite significant:
 
 - Node.js; v14 (April 2020) -> v24 (Jul 2024)
 - React
 - React Hooks
 - styled-components
-- axios/fetch
+- axios/fetch/GraphQL
 - MobX / Redux
 - Webpack / Parcel / esbuild
 - Babel
