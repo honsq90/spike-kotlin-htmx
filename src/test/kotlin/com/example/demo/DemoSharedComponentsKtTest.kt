@@ -1,11 +1,12 @@
 package com.example.demo
 
-import kotlinx.html.div
+import kotlinx.html.*
 import kotlinx.html.stream.createHTML
 import org.jsoup.Jsoup
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import kotlin.test.assertContains
+import kotlin.test.assertEquals
 
 
 /**
@@ -25,7 +26,7 @@ import kotlin.test.assertContains
 class DemoSharedComponentsKtTest {
 
     @Test
-    fun `should return the specified id`() {
+    fun `loadingIndicator - should return the specified id`() {
         val html = createHTML()
             .div {
                 loadingIndicator("test")
@@ -37,4 +38,54 @@ class DemoSharedComponentsKtTest {
 
         assertContains(component.body().text(), "Loading...")
     }
+
+    @Test
+    fun `list - should render headers in wrapper component using default tag`() {
+        val items = listOf("Test 1", "Test 2")
+        val html = createHTML()
+            .div {
+                list(items)
+            }.toString()
+        val component = Jsoup.parse(html)
+
+        val headers = component.select("div > header > p")
+        assertEquals(2, headers.size)
+        assertEquals(items, headers.map { it.text() })
+
+        val bHeaders = component.select("div > header > b")
+        assertEquals(0, bHeaders.size)
+    }
+
+    @Test
+    fun `list - should render headers in wrapper component using b tags`() {
+        val items = listOf("Test 1", "Test 2")
+        val html = createHTML()
+            .div {
+                list(items, useBTags = true)
+            }.toString()
+        val component = Jsoup.parse(html)
+
+        val headers = component.select("div > header > b")
+        assertEquals(2, headers.size)
+        assertEquals(items, headers.map { it.text() })
+
+        val pHeaders = component.select("div > header > p")
+        assertEquals(0, pHeaders.size)
+    }
+
+    @Test
+    fun `list - should not render anything if the list is null`() {
+        val html = createHTML()
+            .div {
+                list(null)
+            }.toString()
+        val component = Jsoup.parse(html)
+
+        val headers = component.select("div > header > b")
+        assertEquals(0, headers.size)
+
+        val pHeaders = component.select("div > header > p")
+        assertEquals(0, pHeaders.size)
+    }
+
 }

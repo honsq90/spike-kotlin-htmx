@@ -1,9 +1,6 @@
 package com.example.demo
 
-import kotlinx.html.FlowContent
-import kotlinx.html.div
-import kotlinx.html.id
-import kotlinx.html.style
+import kotlinx.html.*
 
 /**
  *
@@ -23,5 +20,53 @@ fun FlowContent.loadingIndicator(indicatorId: String) {
         id = indicatorId
         style = "opacity: 0;"
         +"""Loading..."""
+    }
+}
+
+
+/**
+ *
+ * interface Props {
+ *   items?: string[];
+ *   useBTags: boolean;
+ * }
+ *
+ * const List = (props: Props) => {
+ *  return items && items.map((item)) => {
+ *    return <div>
+ *        <Wrapper>
+ *            { useBTags ? <b>{item}</b> : <p>{item}</p> }
+ *        </Wrapper>
+ *    </div>
+ *  })
+ * }
+ *
+ */
+
+fun FlowContent.list(items: List<String>?, useBTags: Boolean = false) {
+    items?.forEach { item ->
+        div {
+            wrapper {
+                if (useBTags) {
+                    b {
+                        +item
+                    }
+                } else {
+                    p {
+                        +item
+                    }
+                }
+
+            }
+        }
+    }
+}
+
+/**
+ * const Wrapper = ({children}: {children: JSX.Element}) => <header>{children}</header>
+ */
+fun FlowContent.wrapper(children: () -> Unit) {
+    header {
+        children()
     }
 }
