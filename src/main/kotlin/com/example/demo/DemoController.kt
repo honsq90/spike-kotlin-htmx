@@ -80,11 +80,7 @@ class DemoController {
                                         }
 
                                     }
-                                    div {
-                                        id = "loadingIndicator"
-                                        style = "opacity: 0;"
-                                        +"""Loading..."""
-                                    }
+                                    loadingIndicator(indicatorId = "loadingIndicator")
                                 }
                             }
                             if (flag) {
