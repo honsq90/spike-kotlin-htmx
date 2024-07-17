@@ -3,6 +3,7 @@
 > To reduce the complexity of a full stack feature delivery by replacing Node.js tooling with Kotlin equivalents
 
 As the Node.js ecosystem and tooling evolve, one would need to keep these tools up to date:
+
 - Node.js; v14 (April 2020) -> v24 (Jul 2024)
 - React
 - React Hooks
@@ -11,7 +12,7 @@ As the Node.js ecosystem and tooling evolve, one would need to keep these tools 
 - MobX / Redux
 - Webpack / Parcel / esbuild
 - Babel
-- Javascript 
+- Javascript
 - Typescript
 - ESLint
 - Storybook
@@ -23,34 +24,36 @@ This overhead is compounded due to each library having different deprecation sch
 
 ### Kotlinx.html
 
-This replaces Typescript and JSX completely, with built-in compile time feedback on nullable data. 
+This replaces Typescript and JSX completely, with built-in compile time feedback on nullable data.
 
 Conditional code can now leverage Kotlin, making it easier to test.
 
 Debugging can be done completely within the JVM, including generating logs during the generation of the html response.
 
 For example:
+
 ```kotlin
 
 body {
-  if (flag) {
-      div("text-center") {
-          +"I'm feature flagged"
-      }
-  }
+    if (flag) {
+        div("text-center") {
+            +"I'm feature flagged"
+        }
+    }
 }
 ```
 
 ### htmx
 
-Now that templating is resolved, we need to handle data retrieval and state management. 
+Now that templating is resolved, we need to handle data retrieval and state management.
 
 htmx provides a HTML attribute based approach, removing the need for:
+
 - axios/fetch
 - UI state management (React Hooks / MobX / Redux)
 
 ```kotlin
-button(classes = "btn btn-primary btn-md px-4 gap-3") { 
+button(classes = "btn btn-primary btn-md px-4 gap-3") {
     attributes["hx-get"] = "/data-list"
     attributes["hx-target"] = "#data-list"
     attributes["data-testid"] = "primary-button"
@@ -81,7 +84,7 @@ div {
 1. Create Jest tests
 1. Bundle TS and JS vendor files into minified vendor assets
 1. Bundle TS and JS project files into minified project assets
-1. Host JS and CSS either on a CDN or in a static folder 
+1. Host JS and CSS either on a CDN or in a static folder
 1. Spring Thymeleaf generates HTML
 1. Load React into DOM
 1. Load project bundle into DOM
@@ -110,55 +113,60 @@ div {
 
 # Feature comparison
 
-Ultimately, each Node.js ecosystem tool aims to improve the predictability of how we develop, test and package interactive user interfaces.
+Ultimately, each Node.js ecosystem tool aims to improve the predictability of how we develop, test and package
+interactive user interfaces.
 
-Feature | With Node.js | Without Node.js
-------|--------|--------
-Dependency Management | Maven + NPM/Yarn | Maven + [webjars](https://www.webjars.org/)
-Module management | Maven + Yarn workspaces/Nx/Lerna + Webpack entries + Webpack Module Federation | Maven
-Date formatting | Java date + moment.js + date-fns | Java date
-Currency formatting | Java currency + browser locale | Java currency
-Syntaxes | Kotlin + Thymeleaf + React + Styled Components | Kotlin + htmx
-Safety checks | Kotlin + Typescript + ESLint | Kotlin
-Logging/Debugging | Kotlin + Browser console + Sentry  | Kotlin
-Data retrieval | Kotlin data class + Typescript interface + axios/fetch | Kotlin data class
-Conditional UIs | Kotlin + Typescript + React JSX | Kotlin
-CI | JUnit + Spring Testing + Webpack + Babel + Minifying + Typescript + ESLint + Jest | JUnit + Spring Testing + JSoup
-Artifacts | jar/war + Webpack vendor bundles + Webpack hashed entrypoints + Webpack hashed JS/CSS bundles | jar/war
-Complex UIs | react-select + AntD / Chakra UI / Tailwind / Daisy UI | ???
+| Feature               | With Node.js                                                                                 | Without Node.js                             |
+|-----------------------|----------------------------------------------------------------------------------------------|---------------------------------------------|
+| Dependency Management | Maven + NPM/Yarn                                                                             | Maven + [webjars](https://www.webjars.org/) |
+| Module management     | Maven + Yarn workspaces/Nx/Lerna + Webpack entries + Webpack Module Federation               | Maven                                       |
+| Date formatting       | Java date + moment.js + date-fns                                                             | Java date                                   |
+| Currency formatting   | Java currency + browser locale                                                               | Java currency                               |
+| Syntaxes              | Kotlin + Thymeleaf + React + Styled Components                                               | Kotlin + htmx                               |
+| Safety checks         | Kotlin + Typescript + ESLint                                                                 | Kotlin                                      |
+| Logging/Debugging     | Kotlin + Browser console + Sentry                                                            | Kotlin                                      |
+| Data retrieval        | Kotlin data class + Typescript interface + axios/fetch                                       | Kotlin data class                           |
+| Conditional UIs       | Kotlin + Typescript + React JSX                                                              | Kotlin                                      |
+| CI                    | JUnit + Spring Testing + Webpack + Babel + Minifying + Typescript + ESLint + Jest            | JUnit + Spring Testing + JSoup              |
+| Artifacts             | jar/war + Webpack vendor bundles + Webpack hashed entrypoint + Webpack hashed JS/CSS bundles | jar/war                                     |
+| UI Datepicker         | react-datepicker / AntD / react-bootstrap + native HTML date input                           | (wip)                                       |
+| UI Datepicker         | react-daterangepicker / AntD / react-bootstrap + native HTML date input                      | (wip)                                       |
+| UI Datatables         | react-data-table-component / AntD / react-bootstrap                                          | (wip)                                       |
+| UI Combobox           | react-select / AntD / react-bootstrap                                                        | (wip)                                       |
+| UI Modal              | react-modal / AntD / react-bootstrap                                                         | (wip)                                       |
 
 ## Testing with Kotlinx.html
 
 ```kotlin
 
-  @PostMapping("/list")
-  fun renderList(@RequestParam number: Int): String {
+@PostMapping("/list")
+fun renderList(@RequestParam number: Int): String {
     return createHTML()
-      .ul {
-        repeat(number) {
-          li {
-            +"Item ${it + 1}"
-          }
+        .ul {
+            repeat(number) {
+                li {
+                    +"Item ${it + 1}"
+                }
+            }
         }
-      }
-  }
+}
 
-  // ...
+// ...
 
-  @Test
-  fun `should render list`() {
-      val number = 5
-      val html = controller.renderList(number)
+@Test
+fun `should render list`() {
+    val number = 5
+    val html = controller.renderList(number)
 
-      val doc: Document = Jsoup.parse(html)
+    val doc: Document = Jsoup.parse(html)
 
-      val listItems = doc.getElementsByTag("li")
+    val listItems = doc.getElementsByTag("li")
 
-      listItems.forEach {
-          it.text() shouldContain "Item "
-      }
+    listItems.forEach {
+        it.text() shouldContain "Item "
+    }
 
-  }
+}
 
 ```
 
