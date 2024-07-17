@@ -132,12 +132,14 @@ interactive user interfaces.
 | CI                    | JUnit + Spring Testing + Webpack + Babel + Minifying + Typescript + ESLint + Jest            | JUnit + Spring Testing + JSoup              |
 | Artifacts             | jar/war + Webpack vendor bundles + Webpack hashed entrypoint + Webpack hashed JS/CSS bundles | jar/war                                     |
 | UI Datepicker         | react-datepicker / AntD / react-bootstrap + native HTML date input                           | (wip)                                       |
-| UI Datepicker         | react-daterangepicker / AntD / react-bootstrap + native HTML date input                      | (wip)                                       |
+| UI Daterangepicker    | react-daterangepicker / AntD / react-bootstrap + native HTML date input                      | (wip)                                       |
 | UI Datatables         | react-data-table-component / AntD / react-bootstrap                                          | (wip)                                       |
 | UI Combobox           | react-select / AntD / react-bootstrap                                                        | (wip)                                       |
 | UI Modal              | react-modal / AntD / react-bootstrap                                                         | (wip)                                       |
 
-## Testing with Kotlinx.html
+## Examples
+
+### Testing with Kotlinx.html
 
 ```kotlin
 
@@ -168,6 +170,90 @@ fun `should render list`() {
         it.text() shouldContain "Item "
     }
 
+}
+
+```
+
+### Creating nested components
+
+```typescript
+const Wrapper = ({children}: {children: JSX.Element}) => {
+  return <header>{children}</header>
+}
+
+const Page = () => {
+    return <div>
+        <Wrapper>
+            <p>Hello</p>
+        </Wrapper>
+    </div>
+}
+```
+
+
+```kotlin
+
+fun FlowContent.wrapper(children: () -> Unit) {
+    header {
+        children()
+    }
+}
+
+
+fun FlowContent.page() {
+    div {
+        wrapper {
+            p {
+                +"Hello"
+            }
+        }
+    }
+}
+
+```
+
+
+### Creating conditional UIs
+
+```typescript
+interface Props { 
+    show: boolean;
+}
+
+const Demo = ({show = false}: Props) => {
+    return <div>
+        {show && <p>Hello</p>}
+    </div>
+}
+
+
+const Page = () => {
+    return <div>
+        <Demo/>
+        <Demo show={true}/>
+    </div>
+}
+```
+
+
+```kotlin
+
+fun FlowContent.demo(show: Boolean = false) {
+    div {
+        if (show) {
+            p {
+                +"Hello"
+            }
+        }
+    }
+}
+
+fun renderPage(): String {
+    return createHTML()
+        .div {
+            demo()
+            demo(show = true)
+        }
 }
 
 ```

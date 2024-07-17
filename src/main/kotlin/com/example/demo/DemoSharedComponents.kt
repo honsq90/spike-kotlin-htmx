@@ -1,6 +1,7 @@
 package com.example.demo
 
 import kotlinx.html.*
+import kotlinx.html.stream.createHTML
 
 /**
  *
@@ -69,4 +70,22 @@ fun FlowContent.wrapper(children: () -> Unit) {
     header {
         children()
     }
+}
+
+fun FlowContent.demo(show: Boolean = false) {
+    div {
+        if (show) {
+            p {
+                +"Hello"
+            }
+        }
+    }
+}
+
+fun renderPage(): String {
+    return createHTML()
+        .div {
+            demo() // follows existing Kotlin behaviour
+            demo(show = true)
+        }
 }
