@@ -1,3 +1,5 @@
+![demo](./docs/demo.gif)
+
 # Experiment Purpose
 
 > To reduce the complexity of a full stack feature delivery by replacing Node.js tooling with Kotlin equivalents
