@@ -22,13 +22,13 @@ class DemoControllerTest {
         val html = controller.renderDashboard()
 
         val doc: Document = Jsoup.parse(html)
-        val heroPrimaryButton = doc.select("[data-testid='primary-button']")
-        assertEquals("Click me", heroPrimaryButton.text())
+        val heroPrimaryButton = doc.getElementById("button-generate-items")
+        assertEquals("Generate items", heroPrimaryButton.text())
         assertEquals("primary-button", heroPrimaryButton.attr("data-testid"))
 
         val form = doc.getElementById("updateForm")
         assertEquals("/list", form.attr("hx-post"))
-        assertEquals("#hero-list", form.attr("hx-target"))
+        assertEquals("#list-display", form.attr("hx-target"))
 
     }
 
@@ -38,13 +38,13 @@ class DemoControllerTest {
         val html = controller.renderDashboard()
 
         val doc: Document = Jsoup.parse(html)
-        val heroPrimaryButton = doc.select("[data-testid='primary-button']")
-        assertEquals("Click me", heroPrimaryButton.text())
+        val heroPrimaryButton = doc.getElementById("button-generate-items")
+        assertEquals("Generate items", heroPrimaryButton.text())
         assertEquals("primary-button", heroPrimaryButton.attr("data-testid"))
 
         val form = doc.getElementById("updateForm")
         assertEquals("/list", form.attr("hx-post"))
-        assertEquals("#hero-list", form.attr("hx-target"))
+        assertEquals("#list-display", form.attr("hx-target"))
 
         assertContains(doc.text(), "I'm feature flagged")
     }
@@ -77,5 +77,28 @@ class DemoControllerTest {
             assertTrue("${it.text()} does not match /Item [1-9]/") { it.text().matches(Regex("Item [1-9]")) }
         }
 
+    }
+
+    @Test
+    fun `should render user input`() {
+        val html = controller.renderText("hello")
+
+        val doc: Document = Jsoup.parse(html)
+
+        val result = doc.getElementsByTag("span")[0]
+
+        assertEquals("hello", result.text())
+    }
+
+    @Test
+    fun `should escape user input`() {
+        val html = controller.renderText("<script>alert('hi!')</script>")
+
+        val doc: Document = Jsoup.parse(html)
+
+        val result = doc.getElementsByTag("span")[0]
+
+        assertEquals("&lt;script&gt;alert('hi!')&lt;/script&gt;", result.html())
+        assertEquals("<script>alert('hi!')</script>", result.text())
     }
 }

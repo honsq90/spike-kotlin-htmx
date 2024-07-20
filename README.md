@@ -156,6 +156,7 @@ fun `should render list`() {
 
 ### Creating nested components
 
+#### React
 ```typescript
 const Wrapper = ({children}: {children: JSX.Element}) => {
   return <header>{children}</header>
@@ -170,8 +171,8 @@ const Page = () => {
 }
 ```
 
+#### Kotlin.html
 ```kotlin
-
 fun FlowContent.wrapper(children: () -> Unit) {
     header {
         children()
@@ -193,6 +194,7 @@ fun FlowContent.page() {
 
 ### Creating conditional UIs
 
+#### React
 ```typescript
 interface Props { 
     show: boolean;
@@ -213,8 +215,8 @@ const Page = () => {
 }
 ```
 
+#### Kotlin.html
 ```kotlin
-
 fun FlowContent.demo(show: Boolean = false) {
     div {
         if (show) {

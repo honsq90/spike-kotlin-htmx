@@ -77,7 +77,7 @@ class DemoController {
 
                                             div(classes = "col-12") {
                                                 button(classes = "btn btn-primary btn-md px-4 gap-3") {
-                                                    attributes["data-testid"] = "primary-button"
+                                                    id = "button-submit-user-input"
                                                     type = ButtonType.submit
                                                     +"Submit"
                                                 }
@@ -102,7 +102,7 @@ class DemoController {
                                     form(classes = "row row-cols-lg-auto align-items-center") {
                                         id = "updateForm"
                                         attributes["hx-post"] = "/list"
-                                        attributes["hx-target"] = "#hero-list"
+                                        attributes["hx-target"] = "#list-display"
                                         attributes["hx-indicator"] = "#loadingIndicator"
 
                                         div(classes = "col-12") {
@@ -123,6 +123,7 @@ class DemoController {
                                         }
                                         div("col-12") {
                                             button(classes = "btn btn-primary btn-md px-4 gap-3") {
+                                                id = "button-generate-items"
                                                 attributes["data-testid"] = "primary-button"
                                                 type = ButtonType.submit
                                                 +"Generate items"
@@ -136,7 +137,7 @@ class DemoController {
                                     p { +"List will be loaded below" }
                                     div("text-center") {
                                         div {
-                                            id = "hero-list"
+                                            id = "list-display"
                                         }
 
                                     }
