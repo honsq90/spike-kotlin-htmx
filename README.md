@@ -306,9 +306,12 @@ Assuming a new vertical slice, this would be a typical high level workflow
 
 ## Useful resources
 
-- [htmx.org: Various papers describing the design philosophy](https://htmx.org/essays/)
-- [htmx: Why You Don't Always Need a SPA Framework - Duncan Hunter - NDC Sydney 2024](https://www.youtube.com/watch?v=KbIrMpccdbI)
-- [htmx for Impatient Devs](https://www.youtube.com/watch?v=TT7SV-bAZyA)
-- [htmx in 100 seconds](https://www.youtube.com/watch?v=r-GSGH2RxJs)
-- [Top 5 htmx features](https://www.youtube.com/watch?v=cmOz0GU5ol8)
-- [htmx is pro-Javascript](https://www.youtube.com/watch?v=9ZhmnfKD5PE)
+### Feature demos
+- [(2:26) htmx in 100 seconds](https://www.youtube.com/watch?v=r-GSGH2RxJs)
+- [(8:32) htmx for Impatient Devs](https://www.youtube.com/watch?v=TT7SV-bAZyA)
+- [(11:55) Top 5 htmx features](https://www.youtube.com/watch?v=cmOz0GU5ol8)
+- [(57:25) htmx: Why You Don't Always Need a SPA Framework - Duncan Hunter - NDC Sydney 2024](https://www.youtube.com/watch?v=KbIrMpccdbI)
+
+### Design philosophy
+- [(22:35) htmx is pro-Javascript](https://www.youtube.com/watch?v=9ZhmnfKD5PE)
+- [htmx.org essays by Carson Gross (creator of HTMX)](https://htmx.org/essays/)
