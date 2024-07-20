@@ -311,7 +311,12 @@ Assuming a new vertical slice, this would be a typical high level workflow
 - [(8:32) htmx for Impatient Devs](https://www.youtube.com/watch?v=TT7SV-bAZyA)
 - [(11:55) Top 5 htmx features](https://www.youtube.com/watch?v=cmOz0GU5ol8)
 - [(57:25) htmx: Why You Don't Always Need a SPA Framework - Duncan Hunter - NDC Sydney 2024](https://www.youtube.com/watch?v=KbIrMpccdbI)
-
-### Design philosophy
 - [(22:35) htmx is pro-Javascript](https://www.youtube.com/watch?v=9ZhmnfKD5PE)
+- [(26:46) A Real World React -> htmx Port](https://htmx.org/essays/a-real-world-react-to-htmx-port/)
+
+### Reading material
 - [htmx.org essays by Carson Gross (creator of HTMX)](https://htmx.org/essays/)
+  - [When to use Hypermedia](https://htmx.org/essays/when-to-use-hypermedia/)
+  - [A Response To "Have Single-Page Apps Ruined the Web?"](https://htmx.org/essays/a-response-to-rich-harris/)
+  - [Why htmx Does Not Have a Build Step](https://htmx.org/essays/no-build-step/)
+
