@@ -239,6 +239,11 @@ fun renderPage(): String {
 
 ![](./docs/type_safety.png)
 
+
+### Handling Cross Site Scripting
+
+![](./docs/xss.gif)
+
 ### Test coverage
 
 ![](./docs/coverage.png)

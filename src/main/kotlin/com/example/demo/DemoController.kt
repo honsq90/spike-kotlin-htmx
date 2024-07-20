@@ -25,6 +25,12 @@ class DemoController {
             }
     }
 
+    @PostMapping("/submitUserInput")
+    fun renderText(@RequestParam userInput: String): String {
+        return createHTML()
+            .span { +userInput }
+    }
+
     @GetMapping("/")
     fun renderDashboard(): String {
 
@@ -47,41 +53,41 @@ class DemoController {
                             h1("visually-hidden") { +"""Heroes examples""" }
                             div("px-4 py-5 text-center") {
                                 h1("display-5 fw-bold text-body-emphasis") { +"""Spring Boot + Kotlinx.html + htmx""" }
+                                hr {  }
                                 div("col-lg-6 mx-auto") {
-                                    p("lead mb-4") { +"""Quickly design and customize responsive mobile-first sites with Bootstrap""" }
                                     div("d-grid gap-2 d-sm-flex justify-content-sm-center") {
+                                        form(classes = "row row-cols-lg-auto align-items-center") {
+                                            id = "textForm"
+                                            attributes["hx-post"] = "/submitUserInput"
+                                            attributes["hx-target"] = "#user-input-display"
 
-                                        form {
-                                            id = "updateForm"
-                                            attributes["hx-post"] = "/list"
-                                            attributes["hx-target"] = "#hero-list"
-                                            attributes["hx-indicator"] = "#loadingIndicator"
-
-                                            div(classes = "form-group row") {
-                                                label {
-                                                    htmlFor = "numberInput"
-                                                    +"""Number:"""
+                                            div(classes = "col-12") {
+                                                label("visually-hidden") {
+                                                    htmlFor = "textInput"
                                                 }
-                                                input(classes = "form-control ") {
-                                                    id = "numberInput"
-                                                    type = InputType.number
-                                                    name = "number"
-                                                    max = "100"
+                                                input(classes = "form-control") {
+                                                    id = "userInput"
+                                                    type = InputType.text
+                                                    name = "userInput"
                                                     required = true
+                                                    placeholder = "Enter some text to display"
                                                 }
 
                                             }
 
-
-                                            button(classes = "btn btn-primary btn-md px-4 gap-3") {
-                                                attributes["data-testid"] = "hero-primary-button"
-                                                type = ButtonType.submit
-                                                +"Click me"
+                                            div(classes = "col-12") {
+                                                button(classes = "btn btn-primary btn-md px-4 gap-3") {
+                                                    attributes["data-testid"] = "primary-button"
+                                                    type = ButtonType.submit
+                                                    +"Submit"
+                                                }
                                             }
                                         }
 
                                     }
-                                    loadingIndicator(indicatorId = "loadingIndicator")
+                                    div {
+                                        id = "user-input-display"
+                                    }
                                 }
                             }
                             if (flag) {
@@ -89,16 +95,55 @@ class DemoController {
                                     +"I'm feature flagged"
                                 }
                             }
-                            div("text-center") {
-                                p { +"List will be loaded below" }
-                                div("text-center") {
-                                    div {
-                                        id = "hero-list"
+                            hr {  }
+                            div("col-lg-6 mx-auto") {
+                                div("d-grid gap-2 d-sm-flex justify-content-sm-center") {
+
+                                    form(classes = "row row-cols-lg-auto align-items-center") {
+                                        id = "updateForm"
+                                        attributes["hx-post"] = "/list"
+                                        attributes["hx-target"] = "#hero-list"
+                                        attributes["hx-indicator"] = "#loadingIndicator"
+
+                                        div(classes = "col-12") {
+                                            label("visually-hidden") {
+                                                htmlFor = "inlineFormInputGroupUsername"
+                                                +"""Username"""
+                                            }
+
+                                            input(classes = "form-control") {
+                                                id = "numberInput"
+                                                type = InputType.number
+                                                name = "number"
+                                                max = "100"
+                                                required = true
+                                                placeholder = "Enter a number to generate items below"
+                                            }
+
+                                        }
+                                        div("col-12") {
+                                            button(classes = "btn btn-primary btn-md px-4 gap-3") {
+                                                attributes["data-testid"] = "primary-button"
+                                                type = ButtonType.submit
+                                                +"Generate items"
+                                            }
+                                        }
                                     }
 
                                 }
+                                loadingIndicator(indicatorId = "loadingIndicator")
+                                div("text-center") {
+                                    p { +"List will be loaded below" }
+                                    div("text-center") {
+                                        div {
+                                            id = "hero-list"
+                                        }
+
+                                    }
+                                }
                             }
-                        }
+                            }
+
                     }
 
                 }

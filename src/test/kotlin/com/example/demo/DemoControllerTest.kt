@@ -22,9 +22,9 @@ class DemoControllerTest {
         val html = controller.renderDashboard()
 
         val doc: Document = Jsoup.parse(html)
-        val heroPrimaryButton = doc.select("[data-testid='hero-primary-button']")
+        val heroPrimaryButton = doc.select("[data-testid='primary-button']")
         assertEquals("Click me", heroPrimaryButton.text())
-        assertEquals("hero-primary-button", heroPrimaryButton.attr("data-testid"))
+        assertEquals("primary-button", heroPrimaryButton.attr("data-testid"))
 
         val form = doc.getElementById("updateForm")
         assertEquals("/list", form.attr("hx-post"))
@@ -38,9 +38,9 @@ class DemoControllerTest {
         val html = controller.renderDashboard()
 
         val doc: Document = Jsoup.parse(html)
-        val heroPrimaryButton = doc.select("[data-testid='hero-primary-button']")
+        val heroPrimaryButton = doc.select("[data-testid='primary-button']")
         assertEquals("Click me", heroPrimaryButton.text())
-        assertEquals("hero-primary-button", heroPrimaryButton.attr("data-testid"))
+        assertEquals("primary-button", heroPrimaryButton.attr("data-testid"))
 
         val form = doc.getElementById("updateForm")
         assertEquals("/list", form.attr("hx-post"))
