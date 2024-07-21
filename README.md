@@ -319,6 +319,7 @@ Assuming a new vertical slice, this would be a typical high level workflow
 
 ### Feature demos
 - [(2:26) htmx in 100 seconds](https://www.youtube.com/watch?v=r-GSGH2RxJs)
+- [(15:58) Intro to htmx](https://www.youtube.com/watch?v=SZ0nR3QHebM)
 - [(8:32) htmx for Impatient Devs](https://www.youtube.com/watch?v=TT7SV-bAZyA)
 - [(11:55) Top 5 htmx features](https://www.youtube.com/watch?v=cmOz0GU5ol8)
 - [(57:25) htmx: Why You Don't Always Need a SPA Framework - Duncan Hunter - NDC Sydney 2024](https://www.youtube.com/watch?v=KbIrMpccdbI)
