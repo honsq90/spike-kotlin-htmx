@@ -1,5 +1,7 @@
 # Spring Boot + kotlinx.html + htmx
 
+[![codecov](https://codecov.io/github/honsq90/spike-kotlin-htmx/graph/badge.svg?token=JXC2B7VZ8Z)](https://codecov.io/github/honsq90/spike-kotlin-htmx)
+
 Inspired by [Radical Simplicity](https://www.radicalsimpli.city/)
 and [DjangoCon 2022 | From React to htmx on a real-world SaaS product: we did it, and it's awesome!](https://www.youtube.com/watch?v=3GObi93tjZI)
 
