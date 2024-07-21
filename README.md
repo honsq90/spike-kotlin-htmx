@@ -245,14 +245,19 @@ fun renderPage(): String {
 
 ![](./docs/type_safety.png)
 
+### Test coverage
+
+![](./docs/coverage.png)
 
 ### Handling Cross Site Scripting
 
 ![](./docs/xss.gif)
 
-### Test coverage
+### Converting HTML to Kotlin
 
-![](./docs/coverage.png)
+Using https://plugins.jetbrains.com/plugin/12205-html-to-kotlinx-html
+
+![](./docs/convert.gif)
 
 ## Comparisons
 
