@@ -87,6 +87,7 @@ htmx provides a HTML attribute based approach, removing the need for:
 
 - axios/fetch
 - UI state management (React Hooks / MobX / Redux)
+- Syncing types between backend and frontend
 
 ```kotlin
 button(classes = "btn btn-primary btn-md px-4 gap-3") {
