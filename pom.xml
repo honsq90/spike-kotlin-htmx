@@ -110,6 +110,11 @@
 			<version>1.18.1</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>io.github.serpro69</groupId>
+			<artifactId>kotlin-faker</artifactId>
+			<version>1.15.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>

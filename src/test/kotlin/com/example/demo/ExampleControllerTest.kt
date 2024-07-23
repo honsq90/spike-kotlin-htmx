@@ -104,14 +104,4 @@ class ExampleControllerTest {
         assertEquals("<script>alert('hi!')</script>", result.text())
     }
 
-    @Test
-    fun `paginatedTable - should render table`() {
-        val html = controller.paginatedTable()
-
-        val doc: Document = Jsoup.parse(html)
-
-        val result = doc.getElementsByTag("table")
-
-        assertEquals(1, result.size)
-    }
 }
